@@ -1,10 +1,19 @@
 package com.example.lab3_sym;
 
-public class Person {
+
+import java.io.Serializable;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import static com.example.lab3_sym.NfcAppCompatActivity.loggedPerson;
+
+public class Person implements Serializable {
 
     private String username;
     private String password;
     private int securityLevel;
+
+
 
     Person(String username, String password){
         this.username = username;
@@ -20,6 +29,10 @@ public class Person {
         return username;
     }
 
+    public int getSecurityLevel(){
+        return securityLevel;
+    }
+
     public void setSecurityMax(){
         securityLevel = 10;
     }
@@ -29,4 +42,5 @@ public class Person {
            securityLevel -= 1;
        }
     }
+
 }
