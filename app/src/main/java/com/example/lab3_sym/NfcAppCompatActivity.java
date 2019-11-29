@@ -1,3 +1,13 @@
+/**
+ * Fichier: NfcAppCompatActivity.java
+ *
+ * Auteur: Edoardo Carpita, Marion Dutu Launay, Robel Teklehaimanot
+ * Date  : 1 Décembre 2019
+ *
+ * But   : Implémentation de l'activité NFCAppCompat qui s'occupe de la gestion des composants NFC.
+ *
+ */
+
 package com.example.lab3_sym;
 
 
@@ -31,7 +41,8 @@ public class NfcAppCompatActivity extends AppCompatActivity {
     protected TimerTask task;
     protected boolean timerRunning = false;
 
-    static protected Person loggedPerson;
+    static protected Person loggedPerson = new Person();
+    Log log;
 
     static {
         // For logging purposes
@@ -96,17 +107,23 @@ public class NfcAppCompatActivity extends AppCompatActivity {
     }
 
     private void handleIntent(Intent intent) {
-        // TODO: handle Intent
-        String action = intent.getAction();
-        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) {
 
-            Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-            loggedPerson.setSecurityMax();
-            startTimer();
-            new NdefReaderTask().execute(tag);
+        if (loggedPerson != null) {
+            log.w("security", " " +loggedPerson.getUsername());
+            String action = intent.getAction();
+            if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) {
 
-        } else if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)) {
-            // dont care
+                Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+                loggedPerson.setSecurityMax();
+
+                if(timerRunning){
+                    timerRunning = false;
+                    timer.cancel();
+                }
+
+                startTimer();
+                new NdefReaderTask().execute(tag);
+            }
         }
     }
 
@@ -170,16 +187,12 @@ public class NfcAppCompatActivity extends AppCompatActivity {
                 }
             };
             timerRunning = true;
-            timer.scheduleAtFixedRate(task, 0, 1000);
+            timer.scheduleAtFixedRate(task, 0, 3000);
         }
     }
 
 
-    /**
-     * Background task for reading the data. Do not block the UI thread while reading.
-     *
-     * @author Ralf Wondratschek
-     */
+
     protected class NdefReaderTask extends AsyncTask<Tag, Void, String> {
 
         @Override
@@ -188,7 +201,6 @@ public class NfcAppCompatActivity extends AppCompatActivity {
 
             Ndef ndef = Ndef.get(tag);
             if (ndef == null) {
-                // NDEF is not supported by this Tag.
                 return null;
             }
 
@@ -227,25 +239,15 @@ public class NfcAppCompatActivity extends AppCompatActivity {
             // Get the Language Code
             int languageCodeLength = payload[0] & 0063;
 
-            // String languageCode = new String(payload, 1, languageCodeLength, "US-ASCII");
-            // e.g. "en"
-
-            // Get the Text
             return new String(payload, languageCodeLength + 1, payload.length - languageCodeLength - 1, textEncoding);
         }
 
         @Override
         protected void onPostExecute(String result) {
-            if (result != null) {
-                CharSequence message = "Read content : " + result;
-                Toast.makeText(NfcAppCompatActivity.this, message, Toast.LENGTH_LONG).show();
 
-                //mTextView.setText("Read content: " + result);
-            }
         }
 
     }
-
 
 }
 

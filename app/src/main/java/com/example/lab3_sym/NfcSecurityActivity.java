@@ -1,7 +1,18 @@
+/**
+ * Fichier: NfcSecurityActivity.java
+ *
+ * Auteur: Edoardo Carpita, Marion Dutu Launay, Robel Teklehaimanot
+ * Date  : 1 Décembre 2019
+ *
+ * But   : Implémentation de la deuxieme activité lancé après le login correct.
+ *
+ */
+
+
 package com.example.lab3_sym;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -11,22 +22,21 @@ public class NfcSecurityActivity extends NfcAppCompatActivity {
     private Button mediumButton;
     private Button lowButton;
 
+    Log log;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.nfc_security_activity);
+
 
         this.highButton   = findViewById(R.id.high);
         this.mediumButton	= findViewById(R.id.medium);
-        this.lowButton    = findViewById(R.id.bottom);
-
-        setContentView(R.layout.nfc_security_activity);
+        this.lowButton    = findViewById(R.id.low);
 
         setTitle("NFC Logged security");
-        // Get the Intent that started this activity and extract the string
-        Intent intent = getIntent();
 
         this.highButton.setOnClickListener((view) -> {
-           checkSecurity(9);
+            checkSecurity(9);
         });
 
         this.mediumButton.setOnClickListener((view) -> {

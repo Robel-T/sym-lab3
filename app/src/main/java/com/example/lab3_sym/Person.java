@@ -1,25 +1,30 @@
+/**
+ * Fichier: NfcActivity.java
+ *
+ * Auteur: Edoardo Carpita, Marion Dutu Launay, Robel Teklehaimanot
+ * Date  : 1 Décembre 2019
+ *
+ * But   : Implémentation de la classe Person.
+ *
+ */
+
 package com.example.lab3_sym;
 
-
+import android.util.Log;
 import java.io.Serializable;
-import java.util.Timer;
-import java.util.TimerTask;
 
-import static com.example.lab3_sym.NfcAppCompatActivity.loggedPerson;
 
 public class Person implements Serializable {
 
     private String username;
     private String password;
     private int securityLevel;
+    Log log;
 
-
-
-    Person(String username, String password){
-        this.username = username;
-        this.password = password;
+    Person(){
         securityLevel = 0;
     }
+
 
     public String getPassword() {
         return password;
@@ -39,8 +44,16 @@ public class Person implements Serializable {
 
     public void setSecuritylowerLevel(){
        if(securityLevel > 0){
+           log.w("time", " " + securityLevel);
            securityLevel -= 1;
        }
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
