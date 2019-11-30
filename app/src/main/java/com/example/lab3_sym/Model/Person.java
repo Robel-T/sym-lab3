@@ -8,7 +8,7 @@
  *
  */
 
-package com.example.lab3_sym;
+package com.example.lab3_sym.Model;
 
 import android.util.Log;
 import java.io.Serializable;
@@ -21,7 +21,7 @@ public class Person implements Serializable {
     private int securityLevel;
     Log log;
 
-    Person(){
+    public Person(){
         securityLevel = 0;
     }
 

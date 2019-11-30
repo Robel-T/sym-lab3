@@ -9,12 +9,14 @@
  */
 
 
-package com.example.lab3_sym;
+package com.example.lab3_sym.Activity.NFC;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.lab3_sym.R;
 
 public class NfcSecurityActivity extends NfcAppCompatActivity {
 
@@ -55,11 +57,11 @@ public class NfcSecurityActivity extends NfcAppCompatActivity {
 
         if (loggedPerson.getSecurityLevel() >= level) {
             //ToastOk!
-            Toast.makeText(NfcSecurityActivity.this, "You are the best", Toast.LENGTH_LONG).show();
+            Toast.makeText(NfcSecurityActivity.this, "Niveau Suffisant", Toast.LENGTH_LONG).show();
 
         } else {
             //ToastNotOk!
-            Toast.makeText(NfcSecurityActivity.this, "Mais casse toi connard", Toast.LENGTH_LONG).show();
+            Toast.makeText(NfcSecurityActivity.this, "Niveau Insuffisant", Toast.LENGTH_LONG).show();
         }
 
 

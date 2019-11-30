@@ -10,7 +10,7 @@
 
 
 
-package com.example.lab3_sym;
+package com.example.lab3_sym.Activity.NFC;
 
 import android.content.Intent;
 import android.nfc.NfcAdapter;
@@ -19,6 +19,9 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.lab3_sym.Model.Person;
+import com.example.lab3_sym.R;
 
 public class NfcActivity extends NfcAppCompatActivity {
 

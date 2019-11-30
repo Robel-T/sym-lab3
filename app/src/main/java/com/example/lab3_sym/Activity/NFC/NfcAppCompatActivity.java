@@ -8,7 +8,7 @@
  *
  */
 
-package com.example.lab3_sym;
+package com.example.lab3_sym.Activity.NFC;
 
 
 import android.app.PendingIntent;
@@ -31,6 +31,9 @@ import java.util.TimerTask;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.lab3_sym.Model.Person;
+import com.example.lab3_sym.R;
+
 public class NfcAppCompatActivity extends AppCompatActivity {
 
 
@@ -41,7 +44,7 @@ public class NfcAppCompatActivity extends AppCompatActivity {
     protected TimerTask task;
     protected boolean timerRunning = false;
 
-    static protected Person loggedPerson = new Person();
+    static public Person loggedPerson = new Person();
     Log log;
 
     static {

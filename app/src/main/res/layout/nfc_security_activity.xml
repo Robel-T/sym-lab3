@@ -8,14 +8,16 @@
 
     <Button
         android:id="@+id/high"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:background="#444242"
         android:gravity="center"
         android:text="High Security Level"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/medium"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -23,25 +25,33 @@
 
     <Button
         android:id="@+id/medium"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
         android:layout_marginTop="24dp"
+        android:background="#444242"
         android:gravity="center"
         android:text="Medium Security Level"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/low"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/high" />
 
     <Button
         android:id="@+id/low"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
         android:layout_marginTop="24dp"
+        android:background="#444242"
         android:gravity="center"
         android:text="Low Security Level"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/medium" />
 

@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NfcActivity"
+            android:name=".Activity.NFC.NfcActivity"
             android:parentActivityName=".MainActivity">
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
@@ -28,15 +28,33 @@
         </activity>
 
         <activity
-            android:name=".NfcSecurityActivity"
-            android:parentActivityName=".NfcActivity">
+            android:name=".Activity.QR.QrActivity"
+            android:parentActivityName=".MainActivity">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".NfcActivity" />
+                android:value=".MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".Activity.QR.ScanActivity"
+            android:parentActivityName=".Activity.QR.QrActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.QR.QrActivity" />
 
         </activity>
 
-        <activity android:name=".NfcAppCompatActivity">
+        <activity
+            android:name=".Activity.NFC.NfcSecurityActivity"
+            android:parentActivityName=".Activity.NFC.NfcActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.NFC.NfcActivity" />
+
+        </activity>
+
+        <activity android:name=".Activity.NFC.NfcAppCompatActivity">
 
         </activity>
 
@@ -47,6 +65,13 @@
         android:name="android.hardware.nfc"
         android:required="true" />
 
+    <uses-feature android:name="android.hardware.camera"
+        android:required="false" />
+
+
     <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+
 
 </manifest>

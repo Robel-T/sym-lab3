@@ -15,6 +15,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.example.lab3_sym.Activity.NFC.NfcActivity;
+import com.example.lab3_sym.Activity.QR.QrActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button nfcButton       = null;
@@ -35,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         codeBarreButton.setOnClickListener((view) -> {
-
+            Intent intent = new Intent(this, QrActivity.class);
+            this.startActivity(intent);
         });
 
     }
